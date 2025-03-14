@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const icons = [
   { src: '/icons/food/burger.png' },
-  { src: '/icons/food/tropical-drink.png' },
+  { src: '/icons/food/tropical-drink.svg' },
   { src: '/icons/coins/shake-coin-1.png' },
   { src: '/icons/coins/shake-coin-2.png' },
   { src: '/icons/coins/shake-coin-3.png' },
