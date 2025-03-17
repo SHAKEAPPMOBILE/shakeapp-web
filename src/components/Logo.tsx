@@ -1,3 +1,5 @@
-export default function Logo() {
-  return <img src="/logo.png" height={32} width={32} alt="Logo" />;
+import Image from "next/image";
+
+export default function Logo({  height, width }: {height: number, width: number}) {
+  return <Image src="/logo.png" height={height} width={width} alt="Logo" />;
 }

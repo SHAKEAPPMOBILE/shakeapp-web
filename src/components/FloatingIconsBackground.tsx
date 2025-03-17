@@ -6,17 +6,14 @@ import { useEffect, useState } from 'react';
 const icons = [
   { src: '/icons/food/burger.png' },
   { src: '/icons/food/tropical-drink.svg' },
-  { src: '/icons/coins/shake-coin-1.png' },
-  { src: '/icons/coins/shake-coin-2.png' },
-  { src: '/icons/coins/shake-coin-3.png' },
-  { src: '/icons/coins/shake-coin-4.png' },
-  { src: '/icons/coins/shake-coin-5.png' },
-  { src: '/icons/coins/shake-coin-6.png' },
+  { src: '/icons/food/dish-3.svg' },
+  { src: '/icons/activities/hiker.svg' },
   { src: '/icons/avatars/avatar-1.svg' },
   { src: '/icons/avatars/avatar-2.svg' },
   { src: '/icons/avatars/avatar-3.svg' },
   { src: '/icons/avatars/avatar-4.svg' },
   { src: '/icons/avatars/avatar-5.svg' },
+
 ];
 
 // Function to generate a random position anywhere on the screen
