@@ -1,10 +1,16 @@
 import MainLinks from '@/components/MainLinks';
 import Navbar from '@/components/Navbar';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className="max-w-7xl w-full mx-auto min-h-screen">
+    <main 
+      className="w-full mx-auto flex flex-col gap-[80px] mt-[80px]">
       <MainLinks />
+      <img 
+        src="/CoverBlue.png" 
+        alt="Cover Blue"
+        width="100%"/>
     </main>
   );
 }
