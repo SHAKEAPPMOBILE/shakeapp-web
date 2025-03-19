@@ -1,6 +1,4 @@
-import MainLinks from '@/components/MainLinks';
-import Navbar from '@/components/Navbar';
-import Image from 'next/image';
+import MainLinks from '@/app/(home)/components/MainLinks';
 
 export default function Home() {
   return (

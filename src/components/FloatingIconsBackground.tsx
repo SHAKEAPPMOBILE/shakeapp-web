@@ -1,7 +1,14 @@
 'use client';
 
+import { getRandomMovement, getRandomPosition, getRandomRotation } from '@/utils/floatingIconsBg';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+
+interface Icon {
+  src: string;
+  duration: number;
+  initialPosition: { x: string; y: string };
+}
 
 const icons = [
   { src: '/icons/food/burger.png' },
@@ -13,38 +20,16 @@ const icons = [
   { src: '/icons/avatars/avatar-3.svg' },
   { src: '/icons/avatars/avatar-4.svg' },
   { src: '/icons/avatars/avatar-5.svg' },
-
 ];
 
-// Function to generate a random position anywhere on the screen
-const getRandomPosition = () => ({
-  x: `${Math.random() * 100}vw`,
-  y: `${Math.random() * 100}vh`,
-});
-
-// Function to generate a random movement direction across the whole screen
-const getRandomMovement = () => ({
-  x: [`${Math.random() * 100}vw`, `${Math.random() * 100}vw`],
-  y: [`${Math.random() * 100}vh`, `${Math.random() * 100}vh`],
-});
-
-// Function to generate a random rotation between -20° and 20°
-const getRandomRotation = () => Math.random() * 40 - 20; // -20° to 20°
-
 export default function FloatingIconsBackground() {
-  const [randomizedIcons, setRandomizedIcons] = useState<
-    {
-      src: string;
-      duration: number;
-      initialPosition: { x: string; y: string };
-    }[]
-  >([]);
+  const [randomizedIcons, setRandomizedIcons] = useState<Icon[]>([]);
 
   useEffect(() => {
     setRandomizedIcons(
       icons.map((icon) => ({
         ...icon,
-        duration: Math.random() * 5 + 7, // Random duration (7s - 12s)
+        duration: Math.random() * 5 + 7, 
         initialPosition: getRandomPosition(),
       })),
     );
@@ -64,8 +49,8 @@ export default function FloatingIconsBackground() {
             rotate: getRandomRotation(),
           }}
           animate={{
-            ...getRandomMovement(),
-            opacity: 1,
+            ...getRandomMovement(icon.src),
+            opacity: [0, 1, 0], 
             rotate: [
               getRandomRotation(),
               getRandomRotation(),
@@ -73,9 +58,8 @@ export default function FloatingIconsBackground() {
             ],
           }}
           transition={{
-            duration: Math.random() * 10 + 5, // Random speed per icon (5s - 15s)
+            duration: Math.random() * 10 + 5, 
             repeat: Infinity,
-            repeatType: 'mirror',
             ease: 'easeInOut',
           }}
         />
