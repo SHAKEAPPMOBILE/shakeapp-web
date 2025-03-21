@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer(){
   return(
-    <div className="flex flex-row justify-around py-[20px]">
+    <div className="flex flex-row flex-wrap justify-around py-[20px] gap-[20px]">
       <div className="flex flex-row items-center justify-center gap-[20px]">
         <a
           href="https://www.instagram.com/shakeapp.inc/"
