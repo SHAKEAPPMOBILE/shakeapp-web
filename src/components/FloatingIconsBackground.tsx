@@ -11,7 +11,7 @@ interface Icon {
 }
 
 const icons = [
-  { src: '/icons/food/burger.png' },
+  { src: '/icons/food/burger.svg' },
   { src: '/icons/food/tropical-drink.svg' },
   { src: '/icons/food/dish-3.svg' },
   { src: '/icons/activities/hiker.svg' },
