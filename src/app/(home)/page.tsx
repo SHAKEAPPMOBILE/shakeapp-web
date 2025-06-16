@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main 
       className="w-full mx-auto flex flex-col gap-[80px] mt-[80px]">
-      <MainLinks />
+      <MainLinks showMobileLinks={false} />
       <img 
         src="/CoverBlue.png" 
         alt="Cover Blue"
