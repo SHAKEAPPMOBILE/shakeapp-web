@@ -13,7 +13,7 @@ export default function MainLinks({ showMobileLinks = true }) {
         alt="Meet new people icon"
         className="w-[250px] md:w-[350px] "/>
       {showMobileLinks && (
-        <div className="flex flex-row gap-[25px] md:gap-[35px]">
+        <div className="flex flex-row space-x-[25px] md:space-x-[35px]">
 <a
   href="https://apps.apple.com/us/app/shake-social/id1509052946"
   target="_blank"
