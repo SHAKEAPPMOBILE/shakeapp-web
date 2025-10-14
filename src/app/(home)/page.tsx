@@ -27,10 +27,13 @@ export default function Home() {
     <main
       className="w-full mx-auto flex flex-col gap-[80px] mt-[80px]">
       <MainLinks />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/CoverBlue.png"
         alt="Cover Blue"
-        width="100%"/>
+        width="100%"
+        style={{ width: '100%', height: 'auto' }}
+      />
 
       <SuccessModal
         isOpen={showSuccess}
