@@ -3,9 +3,9 @@
 import MainLinks from '@/app/(home)/components/MainLinks';
 import SuccessModal from '@/components/SuccessModal';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams();
   const [showSuccess, setShowSuccess] = useState(false);
   const [city, setCity] = useState('');
@@ -24,6 +24,18 @@ export default function Home() {
   }, [searchParams]);
 
   return (
+    <>
+      <SuccessModal
+        isOpen={showSuccess}
+        onClose={() => setShowSuccess(false)}
+        city={city}
+      />
+    </>
+  );
+}
+
+export default function Home() {
+  return (
     <main
       className="w-full mx-auto flex flex-col gap-[80px] mt-[80px]">
       <MainLinks />
@@ -35,11 +47,9 @@ export default function Home() {
         style={{ width: '100%', height: 'auto' }}
       />
 
-      <SuccessModal
-        isOpen={showSuccess}
-        onClose={() => setShowSuccess(false)}
-        city={city}
-      />
+      <Suspense fallback={null}>
+        <HomeContent />
+      </Suspense>
     </main>
   );
 }
