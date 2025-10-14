@@ -90,7 +90,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 />
                 <h2 className="text-3xl font-bold text-gray-800">Book your seat</h2>
                 <p className="text-gray-600 text-center">
-                  Fill in your details and we&apos;ll contact you as soon as possible
+                  Fill details and meet you on Saturday
                 </p>
               </div>
 
