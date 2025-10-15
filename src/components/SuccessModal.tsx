@@ -117,7 +117,7 @@ export default function SuccessModal({ isOpen, onClose, city }: SuccessModalProp
 
                 <div className="text-center">
                   <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                    Payment Successful!
+                    Time to shake!
                   </h2>
                   <p className="text-gray-600">
                     Here are your venue details

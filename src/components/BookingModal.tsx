@@ -90,7 +90,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 />
                 <h2 className="text-3xl font-bold text-gray-800">Book your seat</h2>
                 <p className="text-gray-600 text-center">
-                  Fill details and meet you on Saturday
+                  Fill details and meet you on SATURDAY
                 </p>
               </div>
 
@@ -145,19 +145,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     <option value="dallas">Dallas</option>
                     <option value="los-angeles">Los Angeles</option>
                     <option value="san-francisco">San Francisco</option>
-                    <option value="innsbruck">Innsbruck</option>
                     <option value="vienna">Vienna</option>
-                    <option value="basel">Basel</option>
                     <option value="geneva">Geneva</option>
                     <option value="zurich">Zurich</option>
-                    <option value="cork">Cork</option>
                     <option value="dublin">Dublin</option>
-                    <option value="edinburgh">City of Edinburgh</option>
                     <option value="hamburg">Hamburg</option>
-                    <option value="lyon">Lyon</option>
                     <option value="paris">Paris</option>
-                    <option value="florence">Florence</option>
-                    <option value="milan">Milan</option>
                     <option value="rome">Rome</option>
                     <option value="barcelona">Barcelona</option>
                     <option value="madrid">Madrid</option>

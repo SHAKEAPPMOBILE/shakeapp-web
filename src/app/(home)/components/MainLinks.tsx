@@ -50,7 +50,7 @@ export default function MainLinks() {
           onClick={() => setIsModalOpen(true)}
           className="flex flex-row justify-center items-center px-[60px] py-[18px] md:px-[133px] md:py-[21px] gap-[13px] rounded-[80px] text-white text-xl md:text-3xl font-semibold bg-gradient-to-r from-teal-500 via-purple-500 to-red-500 whitespace-nowrap cursor-pointer hover:shadow-lg transition-shadow"
         >
-          Book Dinner
+          book SATURDAY dinner for now!
           <Image
             src="/icons/food/dish-3.svg"
             height={28}
