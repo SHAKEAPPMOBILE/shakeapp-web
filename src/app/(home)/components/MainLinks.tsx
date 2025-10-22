@@ -50,14 +50,14 @@ export default function MainLinks() {
           onClick={() => setIsModalOpen(true)}
           className="flex flex-row justify-center items-center px-[60px] py-[18px] md:px-[133px] md:py-[21px] gap-[13px] rounded-[80px] text-white text-xl md:text-3xl font-semibold bg-gradient-to-r from-teal-500 via-purple-500 to-red-500 whitespace-nowrap cursor-pointer hover:shadow-lg transition-shadow"
         >
-          Book Saturday Dinner{' '}
-          <Image
+         {'  😎 '} Join SHAKE-SOCIAL Club{'  ⚡ '}
+         {/* <Image
             src="/icons/food/dish-3.svg"
             height={28}
             width={28}
             alt="Dish icon"
             className="md:h-[32px] md:w-[32px]"
-          />
+          /> */}
         </button>
         <div className="flex flex-col gap-4 items-center">
           <p className="text-gray-600 text-lg md:text-xl">Soon on</p>
