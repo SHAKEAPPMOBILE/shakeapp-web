@@ -117,33 +117,22 @@ export default function SuccessModal({ isOpen, onClose, city }: SuccessModalProp
 
                 <div className="text-center">
                   <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                    Time to shake!
+                    Welcome to SHAKE!
                   </h2>
-                  <p className="text-gray-600">
+                 { /*<p className="text-gray-600">
                     Here are your venue details
-                  </p>
+                  </p> */}
                 </div>
 
                 {venue ? (
                   <div className="w-full bg-gradient-to-r from-teal-50 via-purple-50 to-red-50 rounded-2xl p-6 text-center">
                     <div className="flex justify-center mb-4">
-                      <Image
-                        src="/icons/food/dish-3.svg"
-                        height={40}
-                        width={40}
-                        alt="Venue icon"
-                      />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                      {venue.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm">
-                      {venue.address}
-                    </p>
-                    <p className="text-gray-500 text-xs mt-2 capitalize">
-                      {city.replace('-', ' ')}
-                    </p>
-                  </div>
+                      <p className="text-gray-600">
+                    You have unlocked a 3-month of subscription, enjoy!
+                  </p> 
+                    </div> 
+                    
+                  </div> 
                 ) : (
                   <div className="w-full bg-gray-50 rounded-2xl p-6 text-center">
                     <p className="text-gray-600">
