@@ -30,7 +30,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Always use a known base URL (Origin header can be null/empty on some hosts)
-    const baseUrl = SITE_URL;
+    const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  request.headers.get('origin') ||
+  'http://localhost:3000';
+
 
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
