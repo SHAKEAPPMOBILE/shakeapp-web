@@ -44,12 +44,28 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ url: session.url }, { status: 200 });
-  } catch (err: any) {
-    // Surface useful JSON instead of letting Next return HTML
-    console.error('Stripe checkout error:', err);
-    const message = err?.raw?.message || err?.message || 'Failed to create checkout session';
-    const type = err?.raw?.type || err?.type;
-    const code = err?.raw?.code || err?.code;
-    return NextResponse.json({ error: message, type, code }, { status: 500 });
+  }  catch (err: unknown) {
+  console.error('Stripe checkout error:', err);
+
+  let errorMessage = 'Failed to create checkout session';
+  let type: string | undefined;
+  let code: string | undefined;
+
+  if (typeof err === 'object' && err !== null) {
+    const e = err as {
+      message?: string;
+      type?: string;
+      code?: string;
+      raw?: { message?: string; type?: string; code?: string };
+    };
+    errorMessage = e.raw?.message ?? e.message ?? errorMessage;
+    type = e.raw?.type ?? e.type;
+    code = e.raw?.code ?? e.code;
+  } else if (err instanceof Error) {
+    errorMessage = err.message;
   }
+
+  return NextResponse.json({ error: errorMessage, type, code }, { status: 500 });
+}
+
 }
