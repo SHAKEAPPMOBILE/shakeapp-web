@@ -256,7 +256,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 />
                 <h2 className="text-3xl font-bold text-gray-800">Join the Club</h2>
                 <p className="text-gray-600 text-center">
-                  Fill details to get 3 month subscription 
+                  Fill details to get 3 months subscription 
                 </p>
               </div>
 

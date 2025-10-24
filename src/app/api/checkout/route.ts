@@ -1,7 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
+
 export const runtime = 'nodejs';
 
+// ---- Validate envs early and pin API version
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+const STRIPE_PRICE_ID = process.env.STRIPE_PRICE_ID;
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
+if (!STRIPE_SECRET_KEY) {
+  // If this is missing, the module would crash in weird ways later.
+  throw new Error('Missing STRIPE_SECRET_KEY');
+}
+
+//const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2024-06-20' });
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(request: NextRequest) {
@@ -10,40 +22,34 @@ export async function POST(request: NextRequest) {
 
     // Validate input
     if (!name || !email || !city) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Get the base URL for redirect
-    const baseUrl = request.headers.get('origin') || 'http://localhost:3000';
+    if (!STRIPE_PRICE_ID) {
+      return NextResponse.json({ error: 'Missing STRIPE_PRICE_ID' }, { status: 500 });
+    }
+
+    // Always use a known base URL (Origin header can be null/empty on some hosts)
+    const baseUrl = SITE_URL;
 
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price: process.env.STRIPE_PRICE_ID,
-          quantity: 1,
-        },
-      ],
       mode: 'payment',
+      line_items: [{ price: STRIPE_PRICE_ID, quantity: 1 }],
       success_url: `${baseUrl}/?success=true&city=${encodeURIComponent(city)}`,
       cancel_url: `${baseUrl}/`,
       customer_email: email,
-      metadata: {
-        name,
-        city,
-      },
+      metadata: { name, city },
+      // automatic_payment_methods: { enabled: true }, // optional (lets Stripe choose the right methods)
     });
 
-    return NextResponse.json({ url: session.url });
-  } catch (error) {
-    console.error('Stripe checkout error:', error);
-    return NextResponse.json(
-      { error: 'Failed to create checkout session' },
-      { status: 500 }
-    );
+    return NextResponse.json({ url: session.url }, { status: 200 });
+  } catch (err: any) {
+    // Surface useful JSON instead of letting Next return HTML
+    console.error('Stripe checkout error:', err);
+    const message = err?.raw?.message || err?.message || 'Failed to create checkout session';
+    const type = err?.raw?.type || err?.type;
+    const code = err?.raw?.code || err?.code;
+    return NextResponse.json({ error: message, type, code }, { status: 500 });
   }
 }
