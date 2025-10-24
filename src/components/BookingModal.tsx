@@ -254,9 +254,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   width={48}
                   alt="Dish icon"
                 />
-                <h2 className="text-3xl font-bold text-gray-800">Book your seat</h2>
+                <h2 className="text-3xl font-bold text-gray-800">Join the Club</h2>
                 <p className="text-gray-600 text-center">
-                  Fill details and meet you on SATURDAY
+                  Fill details to get 3 month subscription 
                 </p>
               </div>
 
