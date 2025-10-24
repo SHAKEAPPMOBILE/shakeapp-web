@@ -6,7 +6,7 @@ export const runtime = 'nodejs';
 // ---- Validate envs early and pin API version
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 const STRIPE_PRICE_ID = process.env.STRIPE_PRICE_ID;
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+//const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 if (!STRIPE_SECRET_KEY) {
   // If this is missing, the module would crash in weird ways later.
