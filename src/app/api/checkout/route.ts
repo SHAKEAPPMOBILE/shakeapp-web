@@ -67,5 +67,4 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ error: errorMessage, type, code }, { status: 500 });
 }
-
 }
