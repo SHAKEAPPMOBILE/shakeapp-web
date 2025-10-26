@@ -3,6 +3,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
+import confetti from 'canvas-confetti';
+
 
 // Country → City options mapping
 const COUNTRY_CITIES: Record<string, { label: string; value: string }[]> = {
@@ -188,7 +190,20 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/checkout', {
+      // const response = await fetch('/api/checkout', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     name: formData.name,
+      //     email: formData.contact,
+      //     country: formData.country,
+      //     city: formData.city,
+      //   }),
+      // });
+
+      const response = await fetch('/api/join', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -203,13 +218,27 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
       const data = await response.json();
 
-      if (data.url) {
-        // Redirect to Stripe checkout
-        window.location.href = data.url;
+      // if (data.url) {
+      //   // Redirect to Stripe checkout
+      //   window.location.href = data.url;
+      // } else {
+      //   alert('Failed to create checkout session');
+      //   setIsLoading(false);
+      // }
+
+      if (data.success) {
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+        alert('You’re booked! 🎉 See you on Saturday!');
+        onClose();
       } else {
-        alert('Failed to create checkout session');
-        setIsLoading(false);
+        alert('Something went wrong. Please try again.');
       }
+      setIsLoading(false);
+
     } catch (error) {
       console.error('Checkout error:', error);
       alert('Something went wrong. Please try again.');
