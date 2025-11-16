@@ -60,19 +60,19 @@ export default function MainLinks() {
           /> */}
         </button>
         <div className="flex flex-col gap-4 items-center">
-          <p className="text-gray-600 text-lg md:text-xl">Soon on</p>
+          <p className="text-gray-600 text-lg md:text-xl">Available on</p>
           <div className="flex flex-row space-x-[25px] md:space-x-[35px]">
             <AppStoreButton
-              href="#"
+              href="https://apps.apple.com/pt/app/shake-social/id1509052946?l=en-GB"
               label="iOS"
-              iconSrc="/icons/OS/apple.svg"
-              iconAlt="iOS icon"
+               iconSrc="/icons/OS/apple.svg"
+              iconAlt="iOS icon" 
             />
             <AppStoreButton
-              href="#"
+              href="https://play.google.com/store/apps/details?id=com.shakeapp.shakeapp&pcampaignid=web_share"
               label="Android"
               iconSrc="/icons/OS/android.svg"
-              iconAlt="Android icon"
+              iconAlt="Android icon" 
             />
           </div>
         </div>
