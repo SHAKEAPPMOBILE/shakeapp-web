@@ -8,6 +8,8 @@ export default function SubscriptionBox() {
   const [error, setError] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -26,6 +28,8 @@ export default function SubscriptionBox() {
       setError('Please enter a valid email address');
       return;
     }
+
+    setIsLoading(true);
 
     // Call the API
     try {
@@ -47,6 +51,8 @@ export default function SubscriptionBox() {
       setIsSubscribed(true);
     } catch (err) {
       setError('Failed to submit. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -80,15 +86,24 @@ export default function SubscriptionBox() {
             placeholder="your@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`w-full px-4 h-[54px] rounded-xl border ${error ? 'border-red-500' : 'border-gray-200'} bg-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all`}
+            disabled={isLoading}
+            className={`w-full px-4 h-[54px] rounded-xl border ${error ? 'border-red-500' : 'border-gray-200'} bg-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
           />
           {error && <p className="text-red-500 text-sm mt-1 ml-1">{error}</p>}
         </div>
         <GradientButton
           type="submit"
-          className="w-full h-[54px] rounded-xl text-base md:text-lg px-0 md:px-0 py-0 flex items-center justify-center"
+          disabled={isLoading}
+          className={`w-full h-[54px] rounded-xl text-base md:text-lg px-0 md:px-0 py-0 flex items-center justify-center ${isLoading ? 'opacity-80 cursor-not-allowed' : ''}`}
         >
-          Subscribe
+          {isLoading ? (
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              <span>Subscribing...</span>
+            </div>
+          ) : (
+            'Subscribe'
+          )}
         </GradientButton>
       </form>
     </div>
