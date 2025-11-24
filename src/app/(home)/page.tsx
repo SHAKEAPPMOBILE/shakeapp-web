@@ -4,6 +4,7 @@ import MainLinks from '@/app/(home)/components/MainLinks';
 import SuccessModal from '@/components/SuccessModal';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
+import { FadeIn } from '@/components/FadeIn';
 
 function HomeContent() {
   const searchParams = useSearchParams();
@@ -40,12 +41,14 @@ export default function Home() {
       className="w-full mx-auto flex flex-col gap-[80px] mt-[80px]">
       <MainLinks />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/CoverBlue.png"
-        alt="Cover Blue"
-        width="100%"
-        style={{ width: '100%', height: 'auto' }}
-      />
+      <FadeIn delay={0.4}>
+        <img
+          src="/CoverBlue.png"
+          alt="Cover Blue"
+          width="100%"
+          style={{ width: '100%', height: 'auto' }}
+        />
+      </FadeIn>
 
       <Suspense fallback={null}>
         <HomeContent />
