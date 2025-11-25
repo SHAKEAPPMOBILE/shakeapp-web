@@ -41,6 +41,11 @@ export default function Home() {
       className="w-full mx-auto flex flex-col gap-[80px] mt-[80px]">
       <MainLinks />
       {/* eslint-disable-next-line @next/next/no-img-element */}
+      <FadeIn delay={0.2}>
+        <h2 className="text-2xl md:text-4xl font-bold text-center text-gray-800 mb-8 px-4">
+          Serendipity starts here. <br className="md:hidden" /> Shake up your social life.
+        </h2>
+      </FadeIn>
       <FadeIn delay={0.4}>
         <img
           src="/CoverBlue.png"
